@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "question": "What is the capital of France?",
+    "options": ["Paris", "London", "Berlin", "Madrid"],
+    "correctAnswer": "Paris"
+  },
+  {
+    "id": 2,
+    "question": "Which planet is known as the Red Planet?",
+    "options": ["Jupiter", "Mars", "Venus", "Mercury"],
+    "correctAnswer": "Mars"
+  },
+  {
+    "id": 3,
+    "question": "What is 2 + 2?",
+    "options": ["3", "4", "5", "6"],
+    "correctAnswer": "4"
+  },
+  {
+    "id": 4,
+    "question": "Which language is used for React?",
+    "options": ["Python", "Java", "JavaScript", "C++"],
+    "correctAnswer": "JavaScript"
+  },
+  {
+    "id": 5,
+    "question": "What is the largest ocean?",
+    "options": ["Atlantic", "Indian", "Arctic", "Pacific"],
+    "correctAnswer": "Pacific"
+  },
+  {
+    "id": 6,
+    "question": "Who wrote 'Romeo and Juliet'?",
+    "options": ["Shakespeare", "Dickens", "Austen", "Hemingway"],
+    "correctAnswer": "Shakespeare"
+  },
+  {
+    "id": 7,
+    "question": "What is the chemical symbol for Gold?",
+    "options": ["Au", "Ag", "Fe", "Cu"],
+    "correctAnswer": "Au"
+  },
+  {
+    "id": 8,
+    "question": "Which country hosted the 2016 Olympics?",
+    "options": ["China", "Brazil", "UK", "Japan"],
+    "correctAnswer": "Brazil"
+  }
+]
