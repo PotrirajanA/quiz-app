@@ -8,7 +8,12 @@ const App = () => {
   const [questions, setQuestions] = useState([]);
   const [quizStarted, setQuizStarted] = useState(false);
   const [quizFinisheded, setQuizFinished] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState([]);
+  const [score,setScore] = useState(0);
+  const [resultHistory, setResultHistory] = useState(()=>{
+    return JSON.parse(localStorage.getItem("quizResults")) || [];
+  });
   
   const handleNameSubmit = (e)=>{
     e.preventDefault();
@@ -23,7 +28,27 @@ const App = () => {
       // console.log(shuffeld);
       setQuestions(shuffeld.slice(0,5));
     }
-  },[quizStarted])
+  },[quizStarted]);
+
+  const handleAnswer = (selectedAnswer)=>{
+    const currentQuestion = questions[currentQuestionIndex];
+    const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+    if(isCorrect){
+      setScore((score)=>score+1);
+    }
+
+    setAnswers([...answers, {question: currentQuestion.question, selectedAnswer, isCorrect}]);
+
+    if(currentQuestionIndex + 1 < questions.length){
+      // Move Next Question
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    }
+    else{
+      // Save and Show Result
+      console.log(answers)
+    }
+
+  };
 
   return (
     <div className="bg-gray-100 min-h-screen flex justify-center items-center">
@@ -49,7 +74,7 @@ const App = () => {
         )}
 
         {quizStarted && !quizFinisheded && questions.length > 0 && (
-           <Quiz key={currentIndex} question = {questions[currentIndex]} questionNumber ={currentIndex + 1} totalQuestion = {questions.length} />
+           <Quiz key={currentQuestionIndex} question = {questions[currentQuestionIndex]} questionNumber ={currentQuestionIndex + 1} totalQuestion = {questions.length} handleAnswer={handleAnswer} />
         )}
 
         {quizFinisheded && <Result />}

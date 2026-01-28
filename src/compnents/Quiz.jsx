@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 
-const Quiz = ({question, questionNumber, totalQuestion}) => {
-  const[selectedOption, setSelectedOption] = useState(null);
+const Quiz = ({question, questionNumber, totalQuestion, handleAnswer}) => {
+  const [selectedOption, setSelectedOption] = useState(null);
+  const handleOptionClick = (option)=>{
+    if(!selectedOption){
+      setSelectedOption(option);
+      handleAnswer(option);
+    }
+  }
   return (
     <div>
       <h2>Question {questionNumber} of {totalQuestion}</h2>
@@ -13,7 +19,7 @@ const Quiz = ({question, questionNumber, totalQuestion}) => {
         </div>
       </div>
       {question.options.map((option,index)=>(
-        <button key={index} className={`w-full text-left p-2 border border-gray-100 my-2 cursor-pointer ${selectedOption === option ? "bg-sky-700 text-white" : "hover:bg-gray-200"} rounded`}>{option}</button>
+        <button key={index} className={`w-full text-left p-2 border border-gray-100 my-2 cursor-pointer ${selectedOption === option ? "bg-sky-700 text-white" : "hover:bg-gray-200"} rounded`} onClick={()=>handleOptionClick(option)}>{option}</button>
       ))}
     </div>
   )
