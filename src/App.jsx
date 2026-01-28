@@ -6,7 +6,7 @@ const App = () => {
 
   const [userName, setUserName] = useState("");
   const [questions, setQuestions] = useState([]);
-  const [quizStarted, setQuizStarted] = useState(true);
+  const [quizStarted, setQuizStarted] = useState(false);
   const [quizFinisheded, setQuizFinished] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   
