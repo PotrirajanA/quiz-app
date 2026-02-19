@@ -95,7 +95,7 @@ const App = () => {
         )}
 
         {quizStarted && !quizFinisheded && questions.length > 0 && (
-           <Quiz key={currentQuestionIndex} question = {questions[currentQuestionIndex]} questionNumber ={currentQuestionIndex + 1} totalQuestion = {questions.length} handleAnswer={handleAnswer} />
+           <Quiz key={currentQuestionIndex} question = {questions[currentQuestionIndex]} questionNumber ={currentQuestionIndex + 1} totalQuestion = {questions.length}aaaaaaaaaaaar                                                                                                                                                                                handleAnswer={handleAnswer} />
         )}
 
         {quizFinisheded && <Result resultHistory={resultHistory} restartQuiz={restartQuiz} answers={answers} score={score} userName={userName} total={questions.length}/>}
