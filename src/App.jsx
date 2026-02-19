@@ -6,8 +6,8 @@ const App = () => {
 
   const [userName, setUserName] = useState("");
   const [questions, setQuestions] = useState([]);
-  const [quizStarted, setQuizStarted] = useState(false);
-  const [quizFinisheded, setQuizFinished] = useState(false);
+  const [quizStarted, setQuizStarted] = useState(true);
+  const [quizFinisheded, setQuizFinished] = useState(true);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [score,setScore] = useState(0);
@@ -45,10 +45,31 @@ const App = () => {
     }
     else{
       // Save and Show Result
-      console.log(answers)
+      
+      const newResult = {
+        userName,
+        score,
+        total : questions.length,
+        date : new Date().toLocaleString(),
+      };
+
+      const updateHistory = [...resultHistory, newResult];
+      localStorage.setItem("quizResults",JSON.stringify(updateHistory));
+      setResultHistory(updateHistory);
+      setQuizFinished(true);
     }
 
   };
+
+  const restartQuiz = ()=>{
+    setAnswers([]);
+    setQuestions([]);
+    setCurrentQuestionIndex(0);
+    setScore(0);
+    setQuizFinished(false);
+    setUserName("");
+    setQuizStarted(false);
+  }
 
   return (
     <div className="bg-gray-100 min-h-screen flex justify-center items-center">
@@ -77,7 +98,7 @@ const App = () => {
            <Quiz key={currentQuestionIndex} question = {questions[currentQuestionIndex]} questionNumber ={currentQuestionIndex + 1} totalQuestion = {questions.length} handleAnswer={handleAnswer} />
         )}
 
-        {quizFinisheded && <Result />}
+        {quizFinisheded && <Result resultHistory={resultHistory} restartQuiz={restartQuiz} answers={answers} score={score} userName={userName} total={questions.length}/>}
 
       </div>
     </div>
